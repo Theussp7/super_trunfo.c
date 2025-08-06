@@ -1,0 +1,128 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    char nome[50];
+    int populacao;
+    float area;
+    float pib;
+    int pontos_turisticos;
+    float densidade_demografica;
+} Carta;
+
+// Função para comparar as cartas com base no atributo escolhido
+const char* comparar_cartas(int atributo, Carta carta1, Carta carta2) {
+    switch (atributo) {
+        case 1: // Comparar População
+            if (carta1.populacao > carta2.populacao)
+                return carta1.nome;
+            else if (carta1.populacao < carta2.populacao)
+                return carta2.nome;
+            else
+                return "Empate!";
+        case 2: // Comparar Área
+            if (carta1.area > carta2.area)
+                return carta1.nome;
+            else if (carta1.area < carta2.area)
+                return carta2.nome;
+            else
+                return "Empate!";
+        case 3: // Comparar PIB
+            if (carta1.pib > carta2.pib)
+                return carta1.nome;
+            else if (carta1.pib < carta2.pib)
+                return carta2.nome;
+            else
+                return "Empate!";
+        case 4: // Comparar Número de pontos turísticos
+            if (carta1.pontos_turisticos > carta2.pontos_turisticos)
+                return carta1.nome;
+            else if (carta1.pontos_turisticos < carta2.pontos_turisticos)
+                return carta2.nome;
+            else
+                return "Empate!";
+        case 5: // Comparar Densidade Demográfica
+            if (carta1.densidade_demografica < carta2.densidade_demografica)
+                return carta1.nome;
+            else if (carta1.densidade_demografica > carta2.densidade_demografica)
+                return carta2.nome;
+            else
+                return "Empate!";
+        default:
+            return "Opção inválida!";
+    }
+}
+
+// Função para exibir o menu
+void exibir_menu() {
+    printf("\nEscolha o atributo para comparação:\n");
+    printf("1 - População\n");
+    printf("2 - Área\n");
+    printf("3 - PIB\n");
+    printf("4 - Número de pontos turísticos\n");
+    printf("5 - Densidade demográfica\n");
+    printf("Digite o número da opção desejada (ou '0' para sair): ");
+}
+
+int main() {
+    // Definindo as cartas de países
+    Carta carta1 = {"Brasil", 211049527, 8515767.0, 2055.5, 50, 24.8};
+    Carta carta2 = {"Alemanha", 83166711, 357022.0, 3846.2, 75, 232.6};
+
+    int escolha;
+    
+    // Loop principal do menu
+    while (1) {
+        exibir_menu();
+        scanf("%d", &escolha);
+        
+        if (escolha == 0) {
+            printf("Saindo do jogo...\n");
+            break;
+        }
+
+        // Exibindo as cartas e o atributo escolhido
+        printf("\nVocê escolheu comparar pelo atributo: ");
+        
+        switch (escolha) {
+            case 1:
+                printf("População\n");
+                printf("%s - População: %d\n", carta1.nome, carta1.populacao);
+                printf("%s - População: %d\n", carta2.nome, carta2.populacao);
+                break;
+            case 2:
+                printf("Área\n");
+                printf("%s - Área: %.2f km²\n", carta1.nome, carta1.area);
+                printf("%s - Área: %.2f km²\n", carta2.nome, carta2.area);
+                break;
+            case 3:
+                printf("PIB\n");
+                printf("%s - PIB: %.2f bilhões de USD\n", carta1.nome, carta1.pib);
+                printf("%s - PIB: %.2f bilhões de USD\n", carta2.nome, carta2.pib);
+                break;
+            case 4:
+                printf("Número de pontos turísticos\n");
+                printf("%s - Pontos turísticos: %d\n", carta1.nome, carta1.pontos_turisticos);
+                printf("%s - Pontos turísticos: %d\n", carta2.nome, carta2.pontos_turisticos);
+                break;
+            case 5:
+                printf("Densidade Demográfica\n");
+                printf("%s - Densidade demográfica: %.2f habitantes/km²\n", carta1.nome, carta1.densidade_demografica);
+                printf("%s - Densidade demográfica: %.2f habitantes/km²\n", carta2.nome, carta2.densidade_demografica);
+                break;
+            default:
+                printf("Opção inválida, tente novamente!\n");
+                continue;
+        }
+
+        // Comparando e exibindo o vencedor
+        const char* resultado = comparar_cartas(escolha, carta1, carta2);
+        if (strcmp(resultado, "Empate!") == 0) {
+            printf("\nEmpate!\n");
+        } else {
+            printf("\nO vencedor é: %s\n", resultado);
+        }
+    }
+
+    return 0;
+}
