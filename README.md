@@ -1,42 +1,45 @@
-# Super Trunfo - Jogo de Comparação de Países (Versão em C)
+Super Trunfo - Jogo de Comparação de Países
+Este é um jogo de Super Trunfo baseado em cartas de países, onde o jogador escolhe dois atributos para comparar entre dois países. O objetivo é comparar os países com base em diferentes aspectos (como população, área, PIB, pontos turísticos e densidade demográfica) e ver qual carta "vence" em cada rodada, com base na soma dos atributos escolhidos.
 
-Este é o jogo **Super Trunfo**, onde você pode comparar cartas de países com base em diferentes atributos, como **população**, **área**, **PIB**, **número de pontos turísticos** e **densidade demográfica**.
+Funcionalidades
+O jogador pode escolher dois atributos diferentes para comparar entre as cartas.
 
-O objetivo do jogo é escolher um atributo e comparar duas cartas de países. A carta com o maior valor (ou menor no caso da **densidade demográfica**) vence. Em caso de empate, o jogo informará que houve um empate.
+O sistema compara as cartas com base nos dois atributos escolhidos e calcula a soma dos valores.
 
-## Funcionalidades
+O vencedor é determinado pela maior soma dos valores dos atributos escolhidos.
 
-- **Menu interativo** para o jogador escolher o atributo para comparação.
-- **Comparação** dos atributos entre duas cartas de países.
-- **Exibição do vencedor** ou mensagem de empate.
-- **Opção para sair** do jogo.
+O jogo lida com empates, declarando "Empate!" caso a soma dos valores seja igual.
 
-## Como Jogar
+Menus dinâmicos para garantir que o jogador não escolha o mesmo atributo duas vezes.
 
-1. Compile o código em C.
-2. Execute o programa.
-3. Escolha um atributo para comparação entre dois países (Brasil e Alemanha, neste exemplo).
-4. O programa exibirá os valores dos atributos para as duas cartas e mostrará quem venceu ou se houve empate.
-5. Você pode repetir a comparação ou sair do jogo.
+Atributos para Comparação
+População: A população total do país.
 
-## Atributos Disponíveis para Comparação
+Área: A área territorial do país, em km².
 
-- **População**: Número total de habitantes do país.
-- **Área**: Área total do país em quilômetros quadrados.
-- **PIB**: Produto Interno Bruto (em bilhões de USD) do país.
-- **Número de pontos turísticos**: Quantidade de pontos turísticos conhecidos no país.
-- **Densidade Demográfica**: Número de habitantes por quilômetro quadrado (quanto menor, melhor).
+PIB: Produto Interno Bruto do país, em bilhões de USD.
 
-## Como Compilar e Executar
+Pontos turísticos: O número de pontos turísticos registrados no país.
 
-### Passo 1: Compilando o código
+Densidade Demográfica: O número de habitantes por km² (menor valor vence).
 
-Use um compilador de C, como o `gcc`, para compilar o código.
+Como Jogar
+Escolha dois atributos: O jogador escolhe dois atributos diferentes para comparar as cartas.
 
-```bash
+Comparação das cartas: O sistema compara as cartas dos países com base nos atributos escolhidos.
+
+Resultado: O sistema exibe as comparações, as somas dos atributos e declara o vencedor ou empate.
+
+Execução
+Para rodar o programa:
+
+Compilação: Compile o código utilizando um compilador C (como gcc):
+
+bash
+Copiar
+Editar
 gcc super_trunfo.c -o super_trunfo
-Passo 2: Executando o programa
-Após compilar, execute o programa com o seguinte comando:
+Execução: Após a compilação, execute o programa:
 
 bash
 Copiar
@@ -46,62 +49,51 @@ Exemplo de Execução
 bash
 Copiar
 Editar
-Escolha o atributo para comparação:
+Escolha o primeiro atributo para a comparação:
 1 - População
 2 - Área
 3 - PIB
-4 - Número de pontos turísticos
-5 - Densidade demográfica
-Digite o número da opção desejada (ou '0' para sair): 1
+4 - Pontos turísticos
+5 - Densidade Demográfica
+Digite o número da opção desejada: 1
 
-Você escolheu comparar pelo atributo: População
-Brasil - População: 211049527
-Alemanha - População: 83166711
+Escolha o segundo atributo para a comparação:
+1 - População
+2 - Área
+3 - PIB
+4 - Pontos turísticos
+5 - Densidade Demográfica
+Digite o número da opção desejada: 2
+
+Comparação entre Brasil e Alemanha
+Atributo 1: População
+Brasil - Valor: 211049527.00
+Alemanha - Valor: 83166711.00
+
+Atributo 2: Área
+Brasil - Valor: 8515767.00
+Alemanha - Valor: 357022.00
+
+Soma dos atributos:
+Brasil - Soma: 211049527.00
+Alemanha - Soma: 83166711.00
 
 O vencedor é: Brasil
+
+Deseja jogar novamente? (1 - Sim / 0 - Não): 1
 Estrutura do Código
-Estrutura Carta: Cada carta representa um país e armazena as informações de nome, população, área, PIB, número de pontos turísticos e densidade demográfica.
+Função comparar_atributo: Responsável por comparar dois atributos das cartas dos países.
 
-Função comparar_cartas: Compara os valores de dois países com base no atributo escolhido.
+Função exibir_menu: Exibe o menu de atributos disponíveis para o jogador escolher.
 
-Função exibir_menu: Exibe o menu para o jogador escolher o atributo a ser comparado.
+Função exibir_resultado: Exibe os detalhes da comparação, incluindo os valores dos atributos e o vencedor.
 
-Função main: Controla o fluxo do jogo, exibe o menu e chama as funções para comparar as cartas.
+Função main: Controla o fluxo do jogo, permitindo que o jogador escolha os atributos e veja o resultado da comparação.
 
-Exemplo de Cartas
-O jogo utiliza as cartas dos seguintes países (pode-se expandir conforme desejar):
+Tecnologias Utilizadas
+Linguagem de Programação: C
 
-Brasil:
+Compilador: gcc (GNU Compiler Collection)
 
-População: 211.049.527
-
-Área: 8.515.767 km²
-
-PIB: 2055.5 bilhões de USD
-
-Pontos turísticos: 50
-
-Densidade demográfica: 24.8 habitantes/km²
-
-Alemanha:
-
-População: 83.166.711
-
-Área: 357.022 km²
-
-PIB: 3846.2 bilhões de USD
-
-Pontos turísticos: 75
-
-Densidade demográfica: 232.6 habitantes/km²
-
-Como Contribuir
-Se você deseja contribuir para o projeto, fique à vontade para fazer um fork e enviar um pull request com melhorias. Algumas ideias de melhorias incluem:
-
-Adicionar mais países ao conjunto de cartas.
-
-Implementar um sistema de pontuação baseado no número de vitórias.
-
-Melhorar o tratamento de entradas inválidas.
-
-Adicionar mais regras personalizadas de comparação.
+Contribuição
+Se você quiser contribuir com este projeto, fique à vontade para abrir uma issue ou submeter um pull request.
